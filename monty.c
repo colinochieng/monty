@@ -1,5 +1,6 @@
 #include "monty.h"
 #include <stddef.h>
+#include <stdlib.h>
 
 /**
  * main - program integration

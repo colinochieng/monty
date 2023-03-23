@@ -1,5 +1,6 @@
 #include "monty.h"
 #include <stddef.h>
+#include <stdlib.h>
 
 /**
  * read_monty - co-ordinates programs
@@ -48,6 +49,7 @@ int read_monty(FILE *stream)
 	* So we need to develop all the functions according responsible functions while handling the errors
 	* 
 	*/
+
 
 	}
 }
