@@ -1,4 +1,6 @@
 #include "monty.h"
+#include <stddef.h>
+#include <stdlib.h>
 
 /**
  * is_delim - checks for delimter
@@ -50,6 +52,7 @@ int word_count(char *line, char *delim)
  * @ptr: pointer to track_w data type
  * @line: line read
  * @delim: delimiters
+ *
  * Return: void
 */
 void words_len(track_w *ptr, char *line, char *delim)

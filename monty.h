@@ -75,10 +75,10 @@ typedef struct track_words
 	char *word;
 } track_w;
 
-/*Tokenization*/
+/* Tokenization */
 int word_count(char *line, char *delim);
 char **split(char *line, char *delim);
 void words_len(track_w *ptr, char *line, char *delim);
 int is_delim(char c, char *delim);
 
-#endif /*MONTY_H*/
+#endif /* MONTY_H */

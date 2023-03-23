@@ -1,4 +1,6 @@
 #include "monty.h"
+#include <stdlib.h>
+#include <stddef.h>
 
 /**
  * null_line - checks if is made up of
