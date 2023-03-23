@@ -141,3 +141,26 @@ void mod(stack_t **stack, unsigned int line_number)
 	ptr->next->n %= ptr->n;
 	pop(stack, line_number);
 }
+
+/**
+ * mul - multiplies the 2nd top element with the top element of the stack
+ * @stack: pointer to stack
+ * @line_number: position at opcode
+ *
+ * Return: void
+ */
+void mul(stack_t **stack, unsigned int line_number)
+{
+
+	stack_t *ptr = (*stack), *ptr2 = NULL;
+
+	if (ptr == NULL)
+	{
+		handle_error(DIV, exit_status);
+		return;
+	}
+
+	ptr->next = ptr2;
+	ptr2->n *= ptr->n;
+	pop(stack, line_number);
+}
