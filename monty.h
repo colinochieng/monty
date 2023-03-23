@@ -58,6 +58,10 @@ void queue(stack_t **stack, unsigned int line_number);
 
 /*Monty operation*/
 int read_monty(FILE *stream);
+int null_line(char *str, char *delim);
+void free_token(char **tokens);
+void (*get_function(char *opcode))(stack_t **, size_t);
+void free_stack(stack_t *stack);
 
 /**
  * struct track_words - operates words in string
@@ -70,6 +74,7 @@ typedef struct track_words
 	int word_len;
 	char *word;
 } track_w;
+
 /*Tokenization*/
 int word_count(char *line, char *delim);
 char **split(char *line, char *delim);
