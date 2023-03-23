@@ -5,11 +5,13 @@
 #include <string.h>
 #include <fcntl.h>
 #define DELIMS " \t\n\r\a\b"
+#define QUEUE 1
+#define STACK 0
 
-extern  char **opcodes = NULL;
+extern char **opcodes = NULL;
 extern bool tok_track;
 extern int exit_status = EXIT_SUCCESS;
-extern line_no;
+extern size_t line_no;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -44,20 +46,38 @@ typedef struct instruction_s
 /**
  * error_type - enummeration of errors
  * @MALLOC: malloc err
- * @NO_INT: absence of int
- *@STACK_EM: is empty
- *@SWAP: swap err
+ * @NO_INT: no integer error
+ *@STACK_EM: stack empty error
+ *@SWAP: swapping error
+ *@ADD: addition err
+ *@SUB: subraction error
+ *@DIV: dividion error
+ *@MUL: multiplication err
+ *@MOD: rem err
+ *@ZERO_ER1: zero division err
+ *@PCHAR: stack empty error
+ *@OUT_OF_RANGE: not ASCII err
 */
 enum error_type
 {
 	MALLOC,
 	NO_INT,
 	STACK_EM,
-	SWAP
+	SWAP,
+	ADD,
+	SUB,
+	DIV,
+	MUL,
+	MOD,
+	ZERO_ER1,
+	PCHAR,
+	OUT_OF_RANGE
 };
 
 /*error func*/
 void handle_error(enum error_type err, int *exit_st);
+void handle_error2(enum error_type err, int *exit_st);
+
 /*Stack Operation*/
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
@@ -84,6 +104,8 @@ int null_line(char *str, char *delim);
 void free_token(char **tokens);
 void (*get_function(char *opcode))(stack_t **, size_t);
 void free_stack(stack_t *stack);
+int stack_or_queue(stack_t *stack);
+int stack_init(stack_t **stack);
 
 /**
  * struct track_words - operates words in string
