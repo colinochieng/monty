@@ -6,6 +6,11 @@
 #include <fcntl.h>
 #define DELIMS " \t\n\r\a\b"
 
+extern  char **opcodes = NULL;
+extern bool tok_track;
+extern int exit_status = EXIT_SUCCESS;
+extern line_no;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -36,6 +41,23 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * error_type - enummeration of errors
+ * @MALLOC: malloc err
+ * @NO_INT: absence of int
+ *@STACK_EM: is empty
+ *@SWAP: swap err
+*/
+enum error_type
+{
+	MALLOC,
+	NO_INT,
+	STACK_EM,
+	SWAP
+};
+
+/*error func*/
+void handle_error(enum error_type err, int *exit_st);
 /*Stack Operation*/
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
