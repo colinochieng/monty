@@ -1,5 +1,50 @@
 #include "monty.h"
 #include <stddef.h>
+/**
+ * stack_init - initailize the first character
+ * @stack: pointer to stack_t
+ * Return: exit value
+*/
+int stack_init(stack_t **stack)
+{
+	stack_t *ptr;
+
+	ptr = malloc(sizeof(stack_t));
+
+	if (ptr == NULL)
+	{
+		handle_error(MALLOC, exit_status);
+		return (exit_status);
+	}
+
+	ptr->n = STACK;
+	ptr->prev = NULL;
+	ptr->next = NULL;
+
+	*stack = ptr;
+
+	return (EXIT_SUCCESS);
+}
+
+/**
+ * null_line - checks if is made up of
+ * only delimiters
+ * @str: pointer to line
+ * @delim: delimiters
+ * Return: 0 or 1
+*/
+int null_line(char *str, char *delim)
+{
+	int i = 0;
+
+	for (i = 0; str[i]; i++)
+	{
+		if (!(is_delim(str[i], delim)))
+		return (0);
+	}
+
+	return (1);
+}
 
 /**
  * read_monty - co-ordinates programs
@@ -10,10 +55,8 @@ int read_monty(FILE *stream)
 {
 	stack_t *stack_h = NULL;
 	char *line = NULL;
-	int exit_status = EXIT_SUCCESS;
 	size_t len = 0;
 	size_t line_number;
-	char **opcodes = NULL;
 	void (*func_op)(stack_t **, size_t);
 
 	for (line_number = 0; getline(&line, &len, stream) != -1; line_number++)
@@ -24,8 +67,7 @@ int read_monty(FILE *stream)
 			if (null_line(line, DELIMS))
 				continue;
 			free_stack(stack_h);
-			fprintf(stderr, "Error: malloc failed");
-			exit_status = EXIT_FAILURE;
+			handle_error(MALLOC, exit_status);
 		}
 		else if (opcodes[0][0] == '#')
 		{
@@ -41,13 +83,22 @@ int read_monty(FILE *stream)
 			free_token(opcodes);
 			break;
 		}
-	/**
-	* This Code needs to be completed from here
-	* there id need to call the functions func_op
-	* if there is an from called function value of exit_status needs to be changed
-	* So we need to develop all the functions according responsible functions while handling the errors
-	* 
-	*/
-
+		tok_track = false;
+                func_op(stack_h, line_number);
+                if (tok_track)
+                {
+                        exit_status = EXIT_FAILURE;
+                        free_token(opcodes);
+                        break;
+                }
 	}
+	free_stack(stack_h);
+
+	if (line && *line != 0)
+	{
+		free(line);
+		handle_error(MALLOC, exit_status);
+	}
+	free(line);
+	return (exit_status);
 }
