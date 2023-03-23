@@ -9,7 +9,6 @@
 */
 int main(int ac, char *av)
 {
-	int exit_status;
 	FILE *fp = NULL;
 
 	if (ac != 2)
