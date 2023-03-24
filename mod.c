@@ -36,7 +36,7 @@ void mod(stack_t **stack, unsigned int line_number)
 *@p_new: pointer to new node
 *Return: void
 */
-void add_node(stack_s **stack, stack_s **p_new)
+void add_node(stack_t **stack, stack_t **p_new)
 {
 	stack_t *ptr;
 	stack_t *new_p = (*p_new);

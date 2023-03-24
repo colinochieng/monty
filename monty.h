@@ -109,7 +109,7 @@ void (*get_function(char *opcode))(stack_t **, unsigned int);
 void free_stack(stack_t *stack);
 int stack_or_queue(stack_t *stack);
 int stack_init(stack_t **stack);
-void add_node(stack_s **stack, stack_s **p_new);
+void add_node(stack_t **stack, stack_t **p_new);
 
 /**
  * struct track_words - operates words in string

@@ -48,7 +48,7 @@ int stack_or_queue(stack_t *stack)
 */
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *ptr, *new;
+	stack_t *new;
 	int i;
 
 	new = malloc(sizeof(stack_t));
@@ -77,7 +77,7 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 	new->n = atoi(opcodes[1]);
 
-	void add_node(stack, &new);
+	add_node(stack, &new);
 
 	(void)line_number;
 }

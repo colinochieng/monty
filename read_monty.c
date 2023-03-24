@@ -71,12 +71,11 @@ void free_line(char *line)
 int read_monty(FILE *stream)
 {
 	stack_t *stack_h = NULL;
-	char *line = NULL;
-	size_t len = 0;
+	char line[1024];
 	unsigned int line_number = 0;
 	void (*func_op)(stack_t **, unsigned int);
 
-	for (; getline(&line, &len, stream) != -1; line_number++;)
+	for (; getline(line, sizeof(line), stream) != -1; line_number++)
 	{
 		line_no = line_number;
 		opcodes = split(line, DELIMS);
@@ -88,9 +87,11 @@ int read_monty(FILE *stream)
 			handle_error(MALLOC, &exit_status);
 		}
 		else if (opcodes[0][0] == '#')
-			free_token(opcodes), continue;
+		{
+			free_token(opcodes);
+		       	continue;
+		}
 		func_op = get_function(opcodes[0]);
-
 		if (func_op == NULL)
 		{
 			free_stack(stack_h);
