@@ -51,6 +51,7 @@ void push(stack_t **stack, unsigned int line_number)
 	stack_t *new;
 	int i;
 
+	tok_track = false;
 	new = malloc(sizeof(stack_t));
 
 	if (new == NULL)
@@ -65,7 +66,7 @@ void push(stack_t **stack, unsigned int line_number)
 		return;
 	}
 
-	for (i = 0; opcodes[1][0]; i++)
+	for (i = 0; opcodes[1][i]; i++)
 	{
 		if (opcodes[1][i] == '-' && i == 0)
 			continue;
