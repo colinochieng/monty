@@ -14,6 +14,7 @@ void pop(stack_t **stack, unsigned int line_number)
 
 	if (ptr == NULL)
 	{
+		tok_track = true;
 		handle_error(STACK_EM, &exit_status);
 		return;
 	}
