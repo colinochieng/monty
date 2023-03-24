@@ -6,7 +6,7 @@
  * @line_number: position at opcode
  * Return: void
 */
-void pop(stack_t **stack, unsigned int line_number)
+
 void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *ptr = (*stack)->next;

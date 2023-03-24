@@ -55,6 +55,9 @@ int read_monty(FILE *stream)
 	unsigned int line_number = 0;
 	void (*func_op)(stack_t **, unsigned int);
 
+	if (stack_init(&stack_h) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
+
 	for (; fgets(line, sizeof(line), stream) != NULL; line_number++)
 	{
 		line_no = line_number;
