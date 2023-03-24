@@ -52,7 +52,7 @@ int read_monty(FILE *stream)
 {
 	stack_t *stack_h = NULL;
 	char line[1024];
-	unsigned int line_number = 0;
+	unsigned int line_number = 1;
 	void (*func_op)(stack_t **, unsigned int);
 
 	if (stack_init(&stack_h) == EXIT_FAILURE)
