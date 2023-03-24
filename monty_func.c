@@ -35,6 +35,7 @@ int stack_or_queue(stack_t *stack)
 		return (STACK);
 	else if (stack->n == QUEUE)
 		return (QUEUE);
+	printf("FAiled\n");
 	return (-1);
 }
 
