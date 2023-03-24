@@ -11,10 +11,10 @@
 #define QUEUE 1
 #define STACK 0
 
-extern char **opcodes;
-extern bool tok_track;
-extern int exit_status;
-extern unsigned int line_no;
+char **opcodes;
+bool tok_track;
+int exit_status;
+unsigned int line_no;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)

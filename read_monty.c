@@ -75,7 +75,7 @@ int read_monty(FILE *stream)
 	unsigned int line_number = 0;
 	void (*func_op)(stack_t **, unsigned int);
 
-	for (; getline(line, sizeof(line), stream) != -1; line_number++)
+	for (; fgets(line, sizeof(line), stream) != NULL; line_number++)
 	{
 		line_no = line_number;
 		opcodes = split(line, DELIMS);
