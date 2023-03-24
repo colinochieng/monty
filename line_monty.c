@@ -32,7 +32,7 @@ void free_token(char **tokens)
 
 	if (tokens != NULL)
 	{
-		for(i = 0; tokens[i]; i++)
+		for (i = 0; tokens[i]; i++)
 			free(tokens[i]);
 		free(tokens);
 	}
@@ -59,7 +59,7 @@ void free_stack(stack_t *stack)
 /**
  * get_function - finds corresponding function
  * @opcode: command
- * Return: corresponding function 
+ * Return: corresponding function
 */
 void (*get_function(char *opcode))(stack_t **, unsigned int)
 {

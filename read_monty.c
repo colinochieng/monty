@@ -58,11 +58,13 @@ int read_monty(FILE *stream)
 	stack_t *stack_h = NULL;
 	char *line = NULL;
 	size_t len = 0;
-	unsigned int line_number;
+	unsigned int line_number = 0;
 	void (*func_op)(stack_t **, unsigned int);
 
-	for (line_number = 0; getline(&line, &len, stream) != -1; line_number++)
+	while (getline(&line, &len, stream) != -1)
 	{
+		line_number++;
+		line_no = line_number;
 		opcodes = split(line, DELIMS);
 		if (opcodes == NULL)
 		{

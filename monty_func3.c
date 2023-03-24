@@ -53,7 +53,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * add - prints the string starting at
+ * pstr - prints the string starting at
  * the top of the stack, followed by a new line
  * The string stops when either:
  *      the stack is over
@@ -70,7 +70,7 @@ void pstr(stack_t **stack, unsigned int line_number)
 
 	(void)line_number;
 
-	for (;ptr && (ptr->n > 0 && ptr->n <= 127) ; ptr = ptr->next)
+	for (; ptr && (ptr->n > 0 && ptr->n <= 127); ptr = ptr->next)
 	{
 		if (ptr->n)
 		printf("%c", ptr->n);
@@ -136,5 +136,5 @@ void rotr(stack_t **stack, unsigned int line_number)
 		last->prev = *stack;
 		last->next = first;
 		first->prev = last;
-	} 
+	}
 }

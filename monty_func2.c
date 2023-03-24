@@ -73,6 +73,7 @@ void nop(stack_t **stack, unsigned int line_number)
 void sub(stack_t **stack, unsigned int line_number)
 {
 	stack_t *ptr = (*stack)->next;
+
 	if (ptr == NULL || ptr->next == NULL)
 	{
 		handle_error(SUB, &exit_status);
@@ -84,9 +85,9 @@ void sub(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * div - divides the second top element
+ * div_monty - divides the second top element
  * of the stack by the top element of the stack
- * If the top element of the stack is 0 
+ * If the top element of the stack is 0
  *      generates zero error
  * from the second top element of the stack
  * followed by a new line.

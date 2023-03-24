@@ -94,7 +94,7 @@ void words_len(track_w *ptr, char *line, char *delim)
  * split - parses the line
  * @line: opcode line
  * @delim: delimiters
- * Return: token opcodes 
+ * Return: token opcodes
 */
 char **split(char *line, char *delim)
 {
@@ -117,12 +117,12 @@ char **split(char *line, char *delim)
 
 	for (i = 0; i < token_count; i++)
 	{
-		words_len(&words, line, delim); 
+		words_len(&words, line, delim);
 		tokens[i] = malloc(sizeof(char) * (words.word_len + 1));
 
 		if (tokens[i] == NULL)
 		{
-			for(; i >= 0; i--)
+			for (; i >= 0; i--)
 				free(tokens[i]);
 			free(tokens);
 			return (NULL);

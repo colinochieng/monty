@@ -1,14 +1,15 @@
 #ifndef MONTY_H
 #define MONTY_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <fcntl.h>
+#include <unistd.h>
 #include <stdbool.h>
 #define DELIMS " \t\n\r\a\b"
 #define QUEUE 1
 #define STACK 0
-#define _GNU_SOURCE
 
 extern char **opcodes;
 extern bool tok_track;
