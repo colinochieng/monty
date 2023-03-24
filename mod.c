@@ -14,6 +14,7 @@
 void mod(stack_t **stack, unsigned int line_number)
 {
 	stack_t *ptr = (*stack)->next;
+
 	if (ptr == NULL || ptr->next == NULL)
 	{
 		handle_error(DIV, &exit_status);
@@ -29,3 +30,34 @@ void mod(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 }
 
+/**
+*add_node - create a new node
+*@stack: stack pointer
+*@p_new: pointer to new node
+*Return: void
+*/
+void add_node(stack_s **stack, stack_s **p_new)
+{
+	stack_t *ptr;
+	stack_t *new_p = (*p_new);
+
+	if (stack_or_queue(*stack) == STACK)
+	{
+		ptr = (*stack)->next;
+		new_p->next = ptr;
+		new_p->prev = NULL;
+		if (ptr != NULL)
+		ptr->prev = new_p;
+		(*stack)->next = new_p;
+	}
+	else
+	{
+		ptr = (*stack);
+		while (ptr)
+		ptr = ptr->next;
+		ptr->next = new_p;
+		new_p->next = NULL;
+		if (ptr)
+		new_p->prev = ptr;
+	}
+}
