@@ -7,6 +7,7 @@
  * Return: void
 */
 void pop(stack_t **stack, unsigned int line_number)
+void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *ptr = (*stack)->next;
 
@@ -18,14 +19,12 @@ void pop(stack_t **stack, unsigned int line_number)
 		handle_error(STACK_EM, &exit_status);
 		return;
 	}
-	ptr = ptr->next;
-	free(ptr->prev);
 
-	if (ptr)
-		ptr->prev = *stack;
-	(*stack)->next = ptr;
+	if (ptr->next != NULL)
+		ptr->next->prev = *stack;
+	(*stack)->next = ptr->next;
+	free(ptr);
 }
-
 /**
  * stack_or_queue - check if stack or queue
  * @stack: pointer to stack
