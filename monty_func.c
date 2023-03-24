@@ -6,7 +6,6 @@
  * @line_number: position at opcode
  * Return: void
 */
-
 void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *ptr = (*stack)->next;
@@ -48,7 +47,7 @@ int stack_or_queue(stack_t *stack)
 */
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *ptr, *new;
+	stack_t *new;
 	int i;
 
 	new = malloc(sizeof(stack_t));
@@ -77,26 +76,11 @@ void push(stack_t **stack, unsigned int line_number)
 		}
 	}
 	new->n = atoi(opcodes[1]);
+	new->next = NULL;
+	new->prev = NULL;
 
-	if (stack_or_queue(*stack) == STACK)
-        {
-                ptr = (*stack)->next;
-                new->next = ptr;
-                new->prev = NULL;
-                if (ptr != NULL)
-                        ptr->prev = new;
-                (*stack)->next = new;
-        }
-        else
-        {
-                ptr = (*stack);
-                while (ptr)
-                        ptr = ptr->next;
-                ptr->next = new;
-                new->next = NULL;
-                if (ptr)
-                        new->prev = ptr;
-        }
+	add_node(stack, &new);
+
 	(void)line_number;
 }
 

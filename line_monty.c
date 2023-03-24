@@ -45,16 +45,16 @@ void free_token(char **tokens)
 */
 void free_stack(stack_t *stack)
 {
-	if (stack != NULL)
+	stack_t *temp;
+
+	while (stack != NULL)
 	{
-		while (stack)
-		{
-			stack = stack->next;
-			free(stack->prev);
-		}
-		stack = NULL;
+		temp = stack;
+		stack = stack->next;
+		free(temp);
 	}
 }
+
 
 /**
  * get_function - finds corresponding function
