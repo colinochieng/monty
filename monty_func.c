@@ -51,7 +51,6 @@ void push(stack_t **stack, unsigned int line_number)
 	stack_t *new;
 	int i;
 
-	tok_track = false;
 	new = malloc(sizeof(stack_t));
 
 	if (new == NULL)
@@ -72,6 +71,7 @@ void push(stack_t **stack, unsigned int line_number)
 			continue;
 		if (opcodes[1][i] < '0' || opcodes[1][i] > '9')
 		{
+			tok_track = true;
 			handle_error(NO_INT, &exit_status);
 			return;
 		}
@@ -116,6 +116,7 @@ void pint(stack_t **stack, unsigned int line_number)
 
 	if ((*stack)->next == NULL)
 	{
+		tok_track = true;
 		handle_error(STACK_EM, &exit_status);
 		return;
 	}
