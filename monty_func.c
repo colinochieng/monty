@@ -78,7 +78,25 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 	new->n = atoi(opcodes[1]);
 
-	add_node(stack, &new);
+	if (stack_or_queue(*stack) == STACK)
+	{
+		ptr = (*stack)->next;
+		new_p->next = ptr;
+		new_p->prev = NULL;
+		if (ptr != NULL)
+		ptr->prev = new_p;
+		(*stack)->next = new_p;
+	}
+	else
+	{
+		ptr = (*stack);
+		while (ptr)
+		ptr = ptr->next;
+		ptr->next = new_p;
+		new_p->next = NULL;
+		if (ptr)
+		new_p->prev = ptr;
+	}
 
 	(void)line_number;
 }
