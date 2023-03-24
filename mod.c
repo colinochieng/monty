@@ -50,7 +50,7 @@ void add_node(stack_t **stack, stack_t **p_new)
 		ptr->prev = new_p;
 		(*stack)->next = new_p;
 	}
-	else
+	else if (stack_or_queue(*stack) == QUEUE)
 	{
 		ptr = (*stack);
 		while (ptr)
