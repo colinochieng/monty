@@ -94,7 +94,7 @@ void sub(stack_t **stack, unsigned int line_number)
  * @line_number: position at opcode
  * Return: void
 */
-void div(stack_t **stack, unsigned int line_number)
+void div_monty(stack_t **stack, unsigned int line_number)
 {
 	stack_t *ptr = (*stack)->next;
 

@@ -1,8 +1,8 @@
 #include "monty.h"
 
 /**
- * div - divides the second top element
- * of the stack by the top element of the stack
+ * mod -  computes the rest of the division of the second
+ * top element of the stack by the top element of the stack
  * If the top element of the stack is 0
  *      generates zero error
  * from the second top element of the stack
@@ -11,12 +11,12 @@
  * @line_number: position at opcode
  * Return: void
 */
-void div(stack_t **stack, unsigned int line_number)
+void mod(stack_t **stack, unsigned int line_number)
 {
         stack_t *ptr = (*stack)->next;
         if (ptr == NULL || ptr->next == NULL)
 	{
-		handle_error(DIV, exit_status);
+		handle_error(DIV, &exit_status);
 		return;
 	}
         if (ptr->n == 0)
@@ -25,6 +25,7 @@ void div(stack_t **stack, unsigned int line_number)
 		return;
         }
 
-	ptr->next->n /= ptr->n;
+	ptr->next->n %= ptr->n;
 	pop(stack, line_number);
 }
+

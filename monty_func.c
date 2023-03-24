@@ -9,6 +9,9 @@
 void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *ptr = (*stack)->next;
+
+	(void)line_number;
+
 	if (ptr == NULL)
 	{
 		handle_error(STACK_EM, &exit_status);
@@ -94,6 +97,7 @@ void push(stack_t **stack, unsigned int line_number)
 		new->prev = ptr;
 	}
 
+	(void)line_number;
 }
 
 /**
@@ -125,6 +129,8 @@ void pall(stack_t **stack, unsigned int line_number)
 */
 void pint(stack_t **stack, unsigned int line_number)
 {
+	(void)line_number;
+
 	if ((*stack)->next == NULL)
 	{
 		handle_error(STACK_EM, &exit_status);
