@@ -29,26 +29,6 @@ int stack_init(stack_t **stack)
 }
 
 /**
- * null_line - checks if is made up of
- * only delimiters
- * @str: pointer to line
- * @delim: delimiters
- * Return: 0 or 1
-*/
-int null_line(char *str, char *delim)
-{
-	int i = 0;
-
-	for (i = 0; str[i]; i++)
-	{
-		if (!(is_delim(str[i], delim)))
-		return (0);
-	}
-
-	return (1);
-}
-
-/**
 *free_line - frees line memory
 *@line: opcode line
 *Return: void
