@@ -84,6 +84,9 @@ void words_len(track_w *ptr, char *line, char *delim)
 	ptr->word_len = i;
 	ptr->word = malloc(sizeof(char) * (i + 1));
 
+	if (ptr->word == NULL)
+        	return;
+
 	for (j = 0; k < ptr->offset; k++, j++)
 		ptr->word[j] = line[k];
 	ptr->word[j] = '\0';
