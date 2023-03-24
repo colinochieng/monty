@@ -8,6 +8,7 @@
 #define DELIMS " \t\n\r\a\b"
 #define QUEUE 1
 #define STACK 0
+#define _GNU_SOURCE
 
 extern char **opcodes;
 extern bool tok_track;

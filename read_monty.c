@@ -1,7 +1,6 @@
 #include "monty.h"
 #include <stddef.h>
 #include <stdlib.h>
-#include <stdio.h>
 
 /**
  * stack_init - initailize the first character
@@ -60,7 +59,7 @@ int read_monty(FILE *stream)
 	char *line = NULL;
 	size_t len = 0;
 	unsigned int line_number;
-	void (*func_op)(stack_t **, size_t);
+	void (*func_op)(stack_t **, unsigned int);
 
 	for (line_number = 0; getline(&line, &len, stream) != -1; line_number++)
 	{

@@ -73,7 +73,7 @@ void (*get_function(char *opcode))(stack_t **, unsigned int)
 		{"add", add},
 		{"nop", nop},
 		{"sub", sub},
-		{"div", div},
+		{"div", div_monty},
 		{"mul", mul},
 		{"mod", mod},
 		{"pchar", pchar},
