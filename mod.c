@@ -52,12 +52,11 @@ void add_node(stack_t **stack, stack_t **p_new)
 	}
 	else if (stack_or_queue(*stack) == QUEUE)
 	{
-		ptr = (*stack);
-		while (ptr)
-		ptr = ptr->next;
+		ptr = *stack;
+		while (ptr->next != NULL)
+			ptr = ptr->next;
 		ptr->next = new_p;
-		new_p->next = NULL;
-		if (ptr)
 		new_p->prev = ptr;
+		new_p->next = NULL;
 	}
 }
