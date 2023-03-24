@@ -8,7 +8,7 @@
  * @av: vectors
  * Return: status
 */
-int main(int ac, char *av)
+int main(int ac, char **av)
 {
 	FILE *fp = NULL;
 
@@ -23,7 +23,7 @@ int main(int ac, char *av)
 		fprintf(stderr, "Error: Can't open file %s", av[1]);
 		exit (EXIT_FAILURE);
 	}
-	exit_status = run_monty(fp);
+	exit_status = read_monty(fp);
 	fclose(fp);
 	return (exit_status);
 }

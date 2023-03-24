@@ -14,7 +14,7 @@ void mul(stack_t **stack, unsigned int line_number)
 
 	if (ptr == NULL || ptr->next == NULL)
 	{
-		handle_error(MUL, exit_status);
+		handle_error(MUL, &exit_status);
 		return;
 	}
 
@@ -38,14 +38,14 @@ void pchar(stack_t **stack, unsigned int line_number)
 
 	if (ptr == NULL)
 	{
-		handle_error2(PCHAR, exit_status);
+		handle_error2(PCHAR, &exit_status);
 		return;
 	}
 	n = ptr->n;
 
 	if (n < 0 || n > 127)
 	{
-		handle_error2(OUT_OF_RANGE, exit_status);
+		handle_error2(OUT_OF_RANGE, &exit_status);
 		return;
 	}
 

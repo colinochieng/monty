@@ -61,7 +61,7 @@ void free_stack(stack_t *stack)
  * @opcode: command
  * Return: corresponding function 
 */
-void (*get_function(char *opcode))(stack_t **, size_t)
+void (*get_function(char *opcode))(stack_t **, unsigned int)
 {
 	int i;
 	instruction_t funcs[] = {

@@ -4,14 +4,15 @@
 #include <stdlib.h>
 #include <string.h>
 #include <fcntl.h>
+#include <stdbool.h>
 #define DELIMS " \t\n\r\a\b"
 #define QUEUE 1
 #define STACK 0
 
-extern char **opcodes = NULL;
+extern char **opcodes;
 extern bool tok_track;
-extern int exit_status = EXIT_SUCCESS;
-extern size_t line_no;
+extern int exit_status;
+extern unsigned int line_no;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -87,7 +88,7 @@ void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
-void div(stack_t **stack, unsigned int line_number);
+void div_monty(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
@@ -102,7 +103,7 @@ void queue(stack_t **stack, unsigned int line_number);
 int read_monty(FILE *stream);
 int null_line(char *str, char *delim);
 void free_token(char **tokens);
-void (*get_function(char *opcode))(stack_t **, size_t);
+void (*get_function(char *opcode))(stack_t **, unsigned int);
 void free_stack(stack_t *stack);
 int stack_or_queue(stack_t *stack);
 int stack_init(stack_t **stack);

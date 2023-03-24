@@ -15,7 +15,7 @@ int stack_init(stack_t **stack)
 
 	if (ptr == NULL)
 	{
-		handle_error(MALLOC, exit_status);
+		handle_error(MALLOC, &exit_status);
 		return (exit_status);
 	}
 
@@ -69,7 +69,7 @@ int read_monty(FILE *stream)
 			if (null_line(line, DELIMS))
 				continue;
 			free_stack(stack_h);
-			handle_error(MALLOC, exit_status);
+			handle_error(MALLOC, &exit_status);
 		}
 		else if (opcodes[0][0] == '#')
 		{
@@ -99,7 +99,7 @@ int read_monty(FILE *stream)
 	if (line && *line != 0)
 	{
 		free(line);
-		handle_error(MALLOC, exit_status);
+		handle_error(MALLOC, &exit_status);
 	}
 	free(line);
 	return (exit_status);

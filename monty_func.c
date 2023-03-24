@@ -1,6 +1,6 @@
 #include "monty.h"
 
-**
+/**
  * pop - removes the top element of the stack
  * @stack: pointer to stack
  * @line_number: position at opcode
@@ -11,7 +11,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	stack_t *ptr = (*stack)->next;
 	if (ptr == NULL)
 	{
-		handle_error(STACK_EM, exit_status);
+		handle_error(STACK_EM, &exit_status);
 		return;
 	}
 	ptr = ptr->next;
@@ -22,7 +22,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	(*stack)->next = ptr;
 }
 
-**
+/**
  * stack_or_queue - check if stack or queue
  * @stack: pointer to stack
  * Return: 0, 1 or -1 
@@ -53,12 +53,12 @@ void push(stack_t **stack, unsigned int line_number)
 	if (new == NULL)
 	{
 		tok_track = true;
-		handle_error(MALLOC, exit_status);
+		handle_error(MALLOC, &exit_status);
 		return;
 	}
 	if (opcodes[1] == NULL)
 	{
-		handle_error(NO_INT, exit_status);
+		handle_error(NO_INT, &exit_status);
 		return;
 	}
 
@@ -68,7 +68,7 @@ void push(stack_t **stack, unsigned int line_number)
 			continue;
 		if (opcodes[1][i] < '0' || opcodes[1][i] > '9')
 		{
-			handle_error(NO_INT, exit_status);
+			handle_error(NO_INT, &exit_status);
 			return;
 		}
 	}
@@ -116,7 +116,7 @@ void pall(stack_t **stack, unsigned int line_number)
 	}
 }
 
-**
+/**
  * pint - prints the value at the top of the stack
  *  followed by a new line.
  * @stack: pointer to stack
@@ -127,7 +127,7 @@ void pint(stack_t **stack, unsigned int line_number)
 {
 	if ((*stack)->next == NULL)
 	{
-		handle_error(STACK_EM, exit_status);
+		handle_error(STACK_EM, &exit_status);
 		return;
 	}
 

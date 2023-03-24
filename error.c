@@ -42,7 +42,7 @@ void handle_error(enum error_type err, int *exit_st)
 		default:
 			break;
 	}
-	exit_st = EXIT_FAILURE;
+	*exit_st = EXIT_FAILURE;
 }
 
 /**
@@ -64,5 +64,5 @@ void handle_error2(enum error_type err, int *exit_st)
 		default:
 			break;
 	}
-	exit_st = EXIT_FAILURE;
+	*exit_st = EXIT_FAILURE;
 }

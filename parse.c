@@ -99,7 +99,7 @@ void words_len(track_w *ptr, char *line, char *delim)
 char **split(char *line, char *delim)
 {
 	char **tokens = NULL;
-	int token_count, token_len, i, j;
+	int token_count, i, j;
 	track_w words;
 
 	if (line[0] == '\0' && line == NULL)

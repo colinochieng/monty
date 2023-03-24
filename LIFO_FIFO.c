@@ -1,3 +1,4 @@
+#include "monty.h"
 /**
  * stack - sets the format of the data to a stack (LIFO)
  * @stack: pointer to stack
