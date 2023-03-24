@@ -49,6 +49,21 @@ int null_line(char *str, char *delim)
 }
 
 /**
+*free_line - frees line memory
+*@line: opcode line
+*Return: void
+*/
+
+void free_line(char *line)
+{
+	if (line && *line != 0)
+	{
+		free(line);
+		handle_error(MALLOC, &exit_status);
+	}
+	free(line);
+}
+/**
  * read_monty - co-ordinates programs
  * @stream: file pointer
  * Return: exit status
@@ -61,9 +76,8 @@ int read_monty(FILE *stream)
 	unsigned int line_number = 0;
 	void (*func_op)(stack_t **, unsigned int);
 
-	while (getline(&line, &len, stream) != -1)
+	for (; getline(&line, &len, stream) != -1; line_number++;)
 	{
-		line_number++;
 		line_no = line_number;
 		opcodes = split(line, DELIMS);
 		if (opcodes == NULL)
@@ -74,11 +88,9 @@ int read_monty(FILE *stream)
 			handle_error(MALLOC, &exit_status);
 		}
 		else if (opcodes[0][0] == '#')
-		{
-			free_token(opcodes);
-			continue;
-		}
+			free_token(opcodes), continue;
 		func_op = get_function(opcodes[0]);
+
 		if (func_op == NULL)
 		{
 			free_stack(stack_h);
@@ -97,12 +109,5 @@ int read_monty(FILE *stream)
                 }
 	}
 	free_stack(stack_h);
-
-	if (line && *line != 0)
-	{
-		free(line);
-		handle_error(MALLOC, &exit_status);
-	}
-	free(line);
 	return (exit_status);
 }
