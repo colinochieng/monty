@@ -28,7 +28,7 @@ void pop(stack_t **stack, unsigned int line_number)
 /**
  * stack_or_queue - check if stack or queue
  * @stack: pointer to stack
- * Return: 0, 1 or -1 
+ * Return: 0, 1 or -1
 */
 int stack_or_queue(stack_t *stack)
 {
@@ -51,7 +51,7 @@ void push(stack_t **stack, unsigned int line_number)
 	stack_t *ptr, *new;
 	int i;
 
-	new = malloc (sizeof(stack_t));
+	new = malloc(sizeof(stack_t));
 
 	if (new == NULL)
 	{
@@ -77,25 +77,7 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 	new->n = atoi(opcodes[1]);
 
-	if (stack_or_queue(*stack) == STACK)
-	{
-		ptr = (*stack)->next;
-		new->next = ptr;
-		new->prev = NULL;
-		if (ptr != NULL)
-		ptr->prev = new;
-		(*stack)->next = new;
-	}
-	else
-	{
-		ptr = (*stack);
-		while (ptr)
-		ptr = ptr->next;
-		ptr->next = new;
-		new->next = NULL;
-		if (ptr)
-		new->prev = ptr;
-	}
+	void add_node(stack, &new);
 
 	(void)line_number;
 }
