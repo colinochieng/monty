@@ -128,6 +128,7 @@ char **split(char *line, char *delim)
 			for (; i >= 0; i--)
 				free(tokens[i]);
 			free(tokens);
+			free(words.word);
 			return (NULL);
 		}
 

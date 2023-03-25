@@ -91,6 +91,7 @@ int read_monty(FILE *stream)
 			free_token(opcodes);
 			break;
 		}
+		free_token(opcodes);
 	}
 	free_stack(&stack_h);
 	return (exit_status);
