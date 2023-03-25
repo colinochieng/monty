@@ -15,7 +15,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	if (ptr == NULL)
 	{
 		tok_track = true;
-		handle_error(STACK_EM, &exit_status);
+		handle_error2(POP, &exit_status);
 		return;
 	}
 
@@ -61,6 +61,7 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 	if (opcodes[1] == NULL)
 	{
+		free(new);
 		handle_error(NO_INT, &exit_status);
 		return;
 	}
@@ -71,8 +72,10 @@ void push(stack_t **stack, unsigned int line_number)
 			continue;
 		if (opcodes[1][i] < '0' || opcodes[1][i] > '9')
 		{
+			free(new);
 			tok_track = true;
 			handle_error(NO_INT, &exit_status);
+			free_token(opcodes);
 			return;
 		}
 	}

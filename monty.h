@@ -65,6 +65,7 @@ enum error_type
 {
 	MALLOC,
 	NO_INT,
+	POP,
 	STACK_EM,
 	SWAP,
 	ADD,

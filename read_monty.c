@@ -101,11 +101,8 @@ int read_monty(FILE *stream)
 		tok_track = false;
 		func_op(&stack_h, line_number);
 		if (tok_track)
-		{
-			exit_status = EXIT_FAILURE;
-			free_token(opcodes);
 			break;
-		}
+
 		free_token(opcodes);
 	}
 	free_stack(&stack_h);

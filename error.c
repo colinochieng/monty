@@ -61,6 +61,9 @@ void handle_error2(enum error_type err, int *exit_st)
 		case OUT_OF_RANGE:
 			fprintf(stderr, "L%u: can't pchar, value out of range\n", line_no);
 			break;
+		case POP:
+			fprintf(stderr, "L%u: can't pop an empty stack\n", line_no);
+			break;
 		default:
 			break;
 	}
