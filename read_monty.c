@@ -66,7 +66,7 @@ int read_monty(FILE *stream)
 		{
 			if (null_line(line, DELIMS))
 				continue;
-			free_stack(stack_h);
+			free_stack(&stack_h);
 			handle_error(MALLOC, &exit_status);
 		}
 		else if (opcodes[0][0] == '#')
@@ -77,7 +77,7 @@ int read_monty(FILE *stream)
 		func_op = get_function(opcodes[0]);
 		if (func_op == NULL)
 		{
-			free_stack(stack_h);
+			free_stack(&stack_h);
 			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcodes[0]);
 			exit_status = EXIT_FAILURE;
 			free_token(opcodes);
@@ -92,6 +92,6 @@ int read_monty(FILE *stream)
 			break;
 		}
 	}
-	free_stack(stack_h);
+	free_stack(&stack_h);
 	return (exit_status);
 }

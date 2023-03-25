@@ -106,7 +106,7 @@ int read_monty(FILE *stream);
 int null_line(char *str, char *delim);
 void free_token(char **tokens);
 void (*get_function(char *opcode))(stack_t **, unsigned int);
-void free_stack(stack_t *stack);
+void free_stack(stack_t **stack);
 int stack_or_queue(stack_t *stack);
 int stack_init(stack_t **stack);
 void add_node(stack_t **stack, stack_t **p_new);
