@@ -27,6 +27,27 @@ int stack_init(stack_t **stack)
 
 	return (EXIT_SUCCESS);
 }
+/**
+ * null_f_op - confirms if func_op is assigned null
+ * @f: pointer to func_op
+ * @stack: pointer to stack_h
+ * @op: opcodes
+ * Return: bool
+*/
+bool null_f_op(void (*f)(stack_t **, unsigned int), stack_t **stack, char **op)
+{
+	if (f == NULL)
+	{
+		free_stack(stack);
+		fprintf(stderr, "L%u: unknown instruction %s\n", line_no, op[0]);
+		exit_status = EXIT_FAILURE;
+		free_token(op);
+		return (true);
+	}
+
+	return (false);
+}
+
 
 /**
 *free_line - frees line memory
@@ -72,17 +93,11 @@ int read_monty(FILE *stream)
 		else if (opcodes[0][0] == '#')
 		{
 			free_token(opcodes);
-		       	continue;
+			continue;
 		}
 		func_op = get_function(opcodes[0]);
-		if (func_op == NULL)
-		{
-			free_stack(&stack_h);
-			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcodes[0]);
-			exit_status = EXIT_FAILURE;
-			free_token(opcodes);
+		if (null_f_op(func_op, &stack_h, opcodes))
 			break;
-		}
 		tok_track = false;
 		func_op(&stack_h, line_number);
 		if (tok_track)
