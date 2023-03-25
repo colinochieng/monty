@@ -17,7 +17,7 @@ void mod(stack_t **stack, unsigned int line_number)
 
 	if (ptr == NULL || ptr->next == NULL)
 	{
-		handle_error(DIV, &exit_status);
+		handle_error(MOD, &exit_status);
 		return;
 	}
 	if (ptr->n == 0)

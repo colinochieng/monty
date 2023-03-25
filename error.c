@@ -34,7 +34,7 @@ void handle_error(enum error_type err, int *exit_st)
 			fprintf(stderr, "L%u: division by zero\n", line_no);
 			break;
 		case MOD:
-			fprintf(stderr, "L%u: can't mod, stack too\n", line_no);
+			fprintf(stderr, "L%u: can't mod, stack too short\n", line_no);
 			break;
 		case MUL:
 			fprintf(stderr, "L%u: can't mul, stack too short\n", line_no);
